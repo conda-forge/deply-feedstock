@@ -1,5 +1,5 @@
 {% set name = "deply" %}
-{% set version = "0.6.0" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deply-{{ version }}.tar.gz
-  sha256: a5fefd72c4d8a6043a67f1e205c29d9e065c7927f4390c85b56234add855a6de
+  sha256: 4b9a530e64e69aee9ba4199d16c4b81092018fefc425faf9ad456247ed024b57
   patches:
     - 0001-use-environment-for-version.patch
 
