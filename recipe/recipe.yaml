@@ -1,0 +1,60 @@
+schema_version: 1
+
+context:
+  name: deply
+  version: "0.9.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/deply-${{ version }}.tar.gz
+  sha256: 3cd2bc06db87598211a2426b29600d8155a379aacaa22c7d7d528e1b11ae255b
+  patches:
+    - 0001-use-environment-for-version.patch
+
+build:
+  number: 0
+  noarch: python
+  script:
+    env:
+      VERSION: ${{ version }}
+    content: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - deply=deply.main:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=42
+    - wheel
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - pyyaml >=5.1
+
+tests:
+  - python:
+      imports:
+        - deply
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - deply --help
+
+about:
+  summary: A tool to enforce architectural patterns in python projects
+  license: BSD-3-Clause
+  license_file: LICENSE
+  homepage: https://github.com/vashkatsi/deply
+
+extra:
+  recipe-maintainers:
+    - thewchan
