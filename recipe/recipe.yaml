@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: deply
-  version: "1.0.0"
+  version: "1.1.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/deply-${{ version }}.tar.gz
-  sha256: d73fc65bb84771ff0680976dfff28947d5b6367afa5871c0697a2ead7f26f16e
+  sha256: 80f2e8a535958dbfa2d9fff0127c1756412c161abe836c6b63d0c2979e6c4a12
   patches:
     - 0001-use-environment-for-version.patch
 
