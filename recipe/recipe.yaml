@@ -11,8 +11,6 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/deply-${{ version }}.tar.gz
   sha256: 80f2e8a535958dbfa2d9fff0127c1756412c161abe836c6b63d0c2979e6c4a12
-  patches:
-    - 0001-use-environment-for-version.patch
 
 build:
   number: 0
